@@ -5,6 +5,10 @@ dotenv.config();
 // Express
 import express from "express";
 import connectDB from "./src/config/dbConnection.config.js";
+import morgan from "morgan";
+import cors from "cors";
+ 
+app.use(cors({ origin: "http://localhost:5173" }));
 
 const app = express();
 
