@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
+
 const Login = () => {
   const navigate = useNavigate();
   const [loginData, setLoginData] = useState({
@@ -28,6 +30,19 @@ const Login = () => {
       email: loginData.email.toLowerCase(),
       password: loginData.password,
     };
+
+    try {
+      const res = await api.post("/auth/register", payload);
+      toast.success(res.data.message);
+      console.log(res.data.data.photo);
+      navigate("/user/dashboard");
+      sessionStorage.setItem("UserData", JSON.stringify(res.data.data));
+    } catch (error) {
+      toast.error(
+        error.response.status + "|" + error.response?.data?.message ||
+          error.message,
+      );
+    }
   };
 
   return (
