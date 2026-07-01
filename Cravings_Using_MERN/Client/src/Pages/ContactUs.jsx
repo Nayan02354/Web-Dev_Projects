@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 const ContactUs = () => {
   return (
     <>
-      <div className="h-[90vh]  grid-cols-2 p-20 bg-[url('https://cravings.ricr.in/contactPage.jpg')] bg-cover ">
+      <div className="h-[90vh]  grid-cols-2 p-20 bg-[url('contact-us-img.png')] bg-cover ">
         <div className="w-md bg-(--color-base-200) rounded-2xl shadow p-10 flex flex-col justify-center ">
           <h1 className="font-bold text-3xl text-(--color-primary) text-center">
             Contact Us

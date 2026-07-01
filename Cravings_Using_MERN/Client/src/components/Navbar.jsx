@@ -1,6 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
+
 const Navbar = () => {
+  const { user, setIsLogin };
   return (
     <>
       <div className="bg-(--color-primary) text-(--text-light) flex justify-between top-0 z-50 sticky px-5 ">

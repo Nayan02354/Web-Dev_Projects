@@ -1,9 +1,12 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import api from "../config/api.config";
 import toast from "react-hot-toast";
+import { useAuth } from "./context/AuthContext";
 
 const Login = () => {
+  const { setUser, setIsLogin } = useAuth();
   const navigate = useNavigate();
   const [loginData, setLoginData] = useState({
     email: "",
@@ -30,16 +33,17 @@ const Login = () => {
       email: loginData.email.toLowerCase(),
       password: loginData.password,
     };
-
     try {
-      const res = await api.post("/auth/register", payload);
+      const res = await api.post("/auth/login", payload);
       toast.success(res.data.message);
-      console.log(res.data.data.photo);
-      navigate("/user/dashboard");
+      console.log(res.data.data);
       sessionStorage.setItem("UserData", JSON.stringify(res.data.data));
+      setUser(res.data.data);
+      setIsLogin(true);
+      navigate("/user/dashboard");
     } catch (error) {
       toast.error(
-        error.response.status + "|" + error.response?.data?.message ||
+        error.response.statu + " | " + error.response?.data?.message ||
           error.message,
       );
     }
@@ -76,7 +80,7 @@ const Login = () => {
                 name="password"
                 value={loginData.password}
                 onChange={handleChange}
-                className="border p-2 rounded  "
+                className="p-2 border border-orange-200 focus:border-2 focus:border-orange-500 outline-none "
               />
             </div>
             <div className="flex  justify-between mt-3">

@@ -3,7 +3,7 @@ import React from "react";
 const Hero = () => {
   return (
     <>
-      <div className="h-[90vh] bg-[url('https://cravings.ricr.in/assets/bgImage4-L1QELaMd.jpg')] bg-cover ">
+      <div className="h-[90vh] bg-[url('food-img.jpeg')] bg-cover ">
         <div className="text-center text-(--color-primary-content) pt-32">
           <h1 className="text-5xl font-black">
             Your Favorite Food, <br />
