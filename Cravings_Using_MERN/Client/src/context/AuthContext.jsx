@@ -1,36 +1,30 @@
-import React, { use, useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 
 const AuthContext = React.createContext();
 
-const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState([]);
-  const [isLogin, setIsLogin] = useState(false);
+export const AuthProvider = ({ children }) => {
+  const [user, setUser] = useState(
+    JSON.parse(sessionStorage.getItem("UserData")) || "",
+  );
+  const [isLogin, setIsLogin] = useState(!!user);
 
-  // Custom Hooks
   useEffect(() => {
-    //     if (user) {
-    //       setIsLogin(true);
-    //     } else {
-    //       setIsLogin(false);
-    //     }
-    //   }, [user]);
-
-    setIsLogin(!!user); // Short form of if-else
+    // if (user) {
+    //   setIsLogin(true);
+    // } else {
+    //   setIsLogin(false);
+    // }
+    setIsLogin(!!user);
   }, [user]);
 
-  // Kaun kaunsa data share krna h who yha aayega
-  const values = {
+  const value = {
     user,
     setUser,
     isLogin,
     setIsLogin,
   };
 
-  return (
-    <AuthContext.Provider value={value}> {children} </AuthContext.Provider>
-  );
+  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 };
-
-const useAuth = () => useContext(AuthContext); // Ban gya custom hook and khi bhi use kr skte h
 
 export const useAuth = () => useContext(AuthContext);

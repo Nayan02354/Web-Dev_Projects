@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import deliveryboy from "../assets/deliberyboy.png";
 import api from "../config/api.config";
 import toast from "react-hot-toast";
-import { useAuth } from "./context/AuthContext";
+import { useAuth } from "../context/AuthContext";
 
 const Login = () => {
-  const { setUser, setIsLogin } = useAuth();
+  const { setUser, setIsLogin, isLogin } = useAuth();
   const navigate = useNavigate();
   const [loginData, setLoginData] = useState({
     email: "",
@@ -33,35 +33,37 @@ const Login = () => {
       email: loginData.email.toLowerCase(),
       password: loginData.password,
     };
+
     try {
       const res = await api.post("/auth/login", payload);
       toast.success(res.data.message);
-      console.log(res.data.data);
       sessionStorage.setItem("UserData", JSON.stringify(res.data.data));
       setUser(res.data.data);
-      setIsLogin(true);
+      // setIsLogin(true);
       navigate("/user/dashboard");
     } catch (error) {
       toast.error(
-        error.response.statu + " | " + error.response?.data?.message ||
+        error.response.status + " | " + error.response?.data?.message ||
           error.message,
       );
     }
   };
 
+  const inputClass =
+    "border p-2 rounded focus:outline-none focus:ring-2 focus:ring-(--accent)";
+
   return (
     <>
-      <div className="h-[90vh]  grid-cols-2 p-24 bg-[url('https://cravings.ricr.in/foodTable.webp')] bg-cover ">
-        <div className="w-md bg-(--color-base-200) rounded-2xl shadow p-10 flex flex-col justify-center">
-          <h1 className="font-bold text-3xl text-(--color-primary) text-center">
-            Welocome Back!
-          </h1>
-          <p className="text-(--color-secondary) text-center">
-            Login to your Cravings account
-          </p>
+      <div className="min-h-[90vh] bg-linear-to-r from-(--secondary) to-(--primary) grid grid-cols-2 p-10">
+        <div className="hidden md:block">
+          <img src={deliveryboy} alt="" className="rotate-y-180" />
+        </div>
+        <div className="w-2xl bg-(--background) rounded shadow p-10 flex flex-col justify-center">
+          <div className="text-xl font-semibold mb-4">Welcome Back!</div>
 
-          <form onSubmit={handleSubmit}>
-            <div className="flex flex-col gap-2">
+          <form onSubmit={handleSubmit} className="grid grid-cols-2 gap-4">
+            {/* Email */}
+            <div className="col-span-2 flex flex-col gap-2">
               <label htmlFor="email">Email</label>
               <input
                 type="email"
@@ -69,10 +71,12 @@ const Login = () => {
                 name="email"
                 value={loginData.email}
                 onChange={handleChange}
-                className="p-2 border border-orange-200 focus:border-2 focus:border-orange-500 outline-none "
+                className={inputClass}
               />
             </div>
-            <div className="flex flex-col gap-2 mt-4">
+
+            {/* Password */}
+            <div className="col-span-2 flex flex-col gap-2">
               <label htmlFor="password">Password</label>
               <input
                 type="password"
@@ -80,35 +84,42 @@ const Login = () => {
                 name="password"
                 value={loginData.password}
                 onChange={handleChange}
-                className="p-2 border border-orange-200 focus:border-2 focus:border-orange-500 outline-none "
+                className={inputClass}
               />
             </div>
-            <div className="flex  justify-between mt-3">
-              <div>
-                <input type="checkbox" />{" "}
-                <span className="text-(--color-secondary)">Remember me</span>
-              </div>
 
-              <p className="text-(--color-primary) ">Forget Password?</p>
-            </div>
+            {validateError && (
+              <p className="text-red-500 text-sm col-span-2">{validateError}</p>
+            )}
+
             <button
               type="submit"
-              className="mt-6 bg-(--color-primary) text-white py-2 px-4 rounded hover:scale-90 w-full font-medium"
+              className="col-span-2 mt-2 bg-(--primary) text-white py-2 px-4 rounded hover:bg-(--accent)"
             >
               Login
             </button>
-            <div className="text-center mt-2">
-              <p className="text-(--color-secondary)">
-                ----------Don't have an account?----------
-              </p>
-              <Link
-                to="/register"
-                className="text-(--color-primary) hover:underline  "
-              >
-                Create an account
-              </Link>
-            </div>
           </form>
+
+          <div className="mt-6 text-center space-y-2">
+            <p className="text-sm">
+              Don't have an account?{" "}
+              <button
+                onClick={() => navigate("/register")}
+                className="text-(--primary) hover:underline font-semibold"
+              >
+                Register here
+              </button>
+            </p>
+            <p className="text-sm">
+              Having Trouble?{" "}
+              <button
+                onClick={() => navigate("/contact")}
+                className="text-(--primary) hover:underline font-semibold"
+              >
+                Contact Us
+              </button>
+            </p>
+          </div>
         </div>
       </div>
     </>

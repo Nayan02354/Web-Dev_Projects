@@ -9,7 +9,6 @@ import ContactUs from "./Pages/ContactUs";
 import { Toaster } from "react-hot-toast";
 import User_Dashboard from "./Pages/Dashboard/User_Dashboard";
 
-
 const App = () => {
   return (
     <>

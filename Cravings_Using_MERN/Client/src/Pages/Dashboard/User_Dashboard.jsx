@@ -1,59 +1,24 @@
-import React, { useEffect, useState } from "react";
-import { useAuth } from "../../context/AuthContext";
+import React, { useState } from "react";
+import Sidebar from "../../components/userDashboard/Sidebar";
+import Overview from "../../components/userDashboard/Overview";
+import Orders from "../../components/userDashboard/Orders";
+import Settings from "../../components/userDashboard/Settings";
+import WishList from "../../components/userDashboard/WishList";
 
 const UserDashboard = () => {
-  const { user } = useAuth();
+  const [active, setActive] = useState("Overview");
 
-  // const [userData, setUserData] = useState("");
-
-  // useEffect(() => {
-  //   setUserData(JSON.parse(sessionStorage.getItem("UserData")));
-  // }, []);
-
-  // const divClass = "flex gap-6 mt-4 text-xl  ";
-  // const elementClass = "w-24 font-bold  text-cyan-500";
   return (
     <>
-      <div className="w-96 m-5 mb-4 rounded-2xl border border-gray-100 shadow-xl shadow-gray-400 p-6 transition-all duration-300 hover:shadow-2xl hover:-translate-y-1">
-        <div className="bg-(--color-primary) rounded-xl py-3 shadow-md">
-          <h1 className="text-3xl font-bold text-white text-center ">
-            Welcome Back !
-          </h1>
+      <div className="flex h-[92vh]">
+        <div className="w-1/6 border border-red-500 h-full">
+          <Sidebar active={active} setActive={setActive} />
         </div>
-
-        <div className={divClass}>
-          <div className="w-24 h-24 rounded-full overflow-hidden">
-            <img
-              src={userData.photo}
-              alt=""
-              className="w-full h-full object-cover "
-            />
-          </div>
-          <div>
-            <h1 className="font-bold mt-1 text-2xl ">{userData.fullName} </h1>
-            <p>Customer</p>
-          </div>
-        </div>
-        <div className={divClass}>
-          <div className={elementClass}>Full Name:</div>
-          <div> {userData.fullName}</div>
-        </div>
-        <div className={divClass}>
-          <div className={elementClass}>Email: </div>
-          <div className="flex-1 break-all">{userData.email}</div>
-        </div>
-        <div className={divClass}>
-          <div className={elementClass}>Phone:</div>
-          <div>{userData.phone}</div>
-        </div>
-
-        <div className="flex justify-between p-4">
-          <button className="text-(--color-primary) bg-(--color-primary-content) p-2  border border-(--color-primary) hover:scale-95  rounded-lg transition-all">
-            Edit Profile
-          </button>
-          <button className="text-(--color-primary-content) bg-(--color-primary) p-2 rounded-lg hover:scale-95">
-            Logout
-          </button>
+        <div className="w-5/6 border border-green-500 h-full">
+          {active === "Overview" && <Overview />}
+          {active === "Orders" && <Orders />}
+          {active === "WishList" && <WishList />}
+          {active === "Settings" && <Settings />}
         </div>
       </div>
     </>
