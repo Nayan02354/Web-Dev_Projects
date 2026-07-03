@@ -13,6 +13,7 @@ const genToken = async (user) => {
       httpOnly: true,
       secure: false,
       sameSite: "lax",
+        
     });
   } catch (error) {
     throw next();
