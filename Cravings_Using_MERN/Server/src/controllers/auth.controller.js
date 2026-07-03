@@ -1,5 +1,6 @@
 import User from "../models/user.model.js";
 import bcrypt from "bcrypt";
+import {genToken} from ""
 
 export const RegisterUser = async (req, res, next) => {
   try {
@@ -61,6 +62,8 @@ export const LoginUser = async (req, res, next) => {
       error.statusCode = 401;
       return next(error);
     }
+
+    await genToken{existingUser ,  res};
     
 
     res.status(200).json({
