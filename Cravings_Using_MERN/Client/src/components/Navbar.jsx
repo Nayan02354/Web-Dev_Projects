@@ -2,7 +2,7 @@ import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import { AiOutlineLogout } from "react-icons/ai";
-
+ 
 const Navbar = () => {
   const { user, setUser, isLogin, setIsLogin } = useAuth();
   const navigate = useNavigate();
@@ -16,8 +16,10 @@ const Navbar = () => {
 
   return (
     <>
-      <div className="bg-(--primary) text-lg text-(--primary-text) p-3 flex justify-between items-center">
-        <div>Cravings</div>
+      <div className="bg-(--color-primary) text-lg text-(--color-primary-content) p-3 flex justify-between items-center">
+        <div>
+          <img src="craving-logo.png" alt="" width={100} height={50} />
+        </div>
 
         <div className="flex gap-4 items-center">
           <Link to={"/"} className="hover:underline">

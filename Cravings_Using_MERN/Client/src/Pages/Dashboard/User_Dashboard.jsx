@@ -2,9 +2,9 @@ import React, { useState } from "react";
 
 import Sidebar from "../../components/User_Dashboard/Sidebar";
 import settings from "../../components/User_Dashboard/Settings";
-import Orders from "../../components/userDashboard/Orders";
 import Overview from "../../components/User_Dashboard/Overview";
-import WishList from "../../components/userDashboard/WishList";
+import WishList from "../../components/User_Dashboard/WishList";
+import Orders from "../../components/User_Dashboard/Orders";
 
 const UserDashboard = () => {
   const [active, setActive] = useState("Overview");
