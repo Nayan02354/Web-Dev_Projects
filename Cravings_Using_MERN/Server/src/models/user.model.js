@@ -15,13 +15,26 @@ const UserSchema = mongoose.Schema(
       type: String,
       required: true,
     },
+    dob: {
+      type: Date,
+      required: true,
+    },
+    gender: {
+      type: String,
+      required: true,
+    },
     password: {
       type: String,
       required: true,
     },
     photo: {
-      type: String,
-      required: true,
+      url: {
+        type: String,
+        required: true,
+      },
+      publicId: {
+        type: String,
+      },
     },
   },
   {
