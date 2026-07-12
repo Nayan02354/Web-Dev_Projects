@@ -5,25 +5,25 @@ import api from "../../config/ApiConfig";
 import toast from "react-hot-toast";
 import { MdOutlineAddAPhoto } from "react-icons/md";
 
-const CustomerSetting = () => {
+const AdminSetting = () => {
   const { user, setUser } = useAuth();
   const [editingProfile, setEditingProfile] = useState(false);
   const [profilePic, setProfilePic] = useState(null);
   const [profilePicPreview, setProfilePicPreview] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
 
-  const [formData, setFormData] = useState({     
+  const [formData, setFormData] = useState({
     fullName: user?.fullName || "",
     email: user?.email || "",
     phone: user?.phone || "",
   });
 
-  // Profile handlers         
+  // Profile handlers
   const handleProfileChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
-  
+
   const handleSaveProfile = async () => {
     try {
       setIsLoading(true);
@@ -33,7 +33,7 @@ const CustomerSetting = () => {
       payload.append("email", formData.email.toLowerCase());
       payload.append("phone", formData.phone);
 
-      payload.append("displayPic", profilePic);
+      payload.append("displayPic", profilePic); 
 
       const response = await api.put(`/user/edit-profile`, payload);
 
@@ -175,4 +175,4 @@ const CustomerSetting = () => {
   );
 };
 
-export default CustomerSetting;
+export default AdminSetting;
