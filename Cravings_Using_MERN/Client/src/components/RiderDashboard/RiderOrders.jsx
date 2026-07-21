@@ -1,6 +1,6 @@
 import React from "react";
 
-const CustomerOrders = () => {
+const RiderOrders = () => {
   return (
     <div className="overflow-y-auto h-full">
       <h2 className="text-2xl font-bold mb-6">My Orders</h2>
@@ -17,10 +17,7 @@ const CustomerOrders = () => {
           </thead>
           <tbody>
             <tr className="border-b border-(--color-secondary)">
-              <td
-                colSpan="5"
-                className="text-center py-4 text-(--color-neutral)"
-              >
+              <td colSpan="5" className="text-center py-4 text-(--color-neutral)">
                 No orders yet
               </td>
             </tr>
@@ -31,4 +28,4 @@ const CustomerOrders = () => {
   );
 };
 
-export default CustomerOrders;
+export default RiderOrders;
