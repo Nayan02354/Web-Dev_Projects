@@ -23,11 +23,11 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-5 gap-8 mb-8">
           {/* About Section */}
           <div>
-            <img
+            {/* <img
               src={logoCircle}
               alt="Cravings Logo"
               className="mb-4 w-32 h-32"
-            />
+            /> */}
           </div>
 
           {/* Quick Links */}
