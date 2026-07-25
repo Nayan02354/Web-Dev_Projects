@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import toast from "react-hot-toast";
 import { FaPhoneAlt, FaEnvelope, FaMapMarkerAlt } from "react-icons/fa";
-import contactBg from "../assets/contactPage.jpg";
+// import contactBg from "../assets/contactPage.jpg";
 import api from "../config/ApiConfig";
 
 const Contact = () => {
@@ -44,13 +44,7 @@ const Contact = () => {
         email: formData.email.toLowerCase(),
       });
       toast.success(res.data.message);
-      setFormData({
-        fullName: "",
-        email: "",
-        phone: "",
-        subject: "",
-        message: "",
-      });
+      setFormData({ fullName: "", email: "", phone: "", subject: "", message: "" });
       setErrors({});
     } catch (error) {
       toast.error(
@@ -70,7 +64,9 @@ const Contact = () => {
     }`;
 
   return (
-    <div className="h-[90vh] flex items-center justify-start bg-[url('/contactPage.jpg')] bg-cover bg-center p-10 md:ps-30">
+    <div
+      className="h-[90vh] flex items-center justify-start bg-[url('/contactPage.jpg')] bg-cover bg-center p-10 md:ps-30"
+    >
       <div className="bg-white rounded-lg shadow-md px-10 py-6 max-w-md w-full overflow-y-auto max-h-[85vh]">
         <h1 className="text-3xl font-bold text-(--color-primary) mb-2 text-center">
           Contact Us
