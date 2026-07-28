@@ -57,7 +57,7 @@ const Navbar = () => {
               className="flex gap-2 items-center text-(--color-primary-content) border border-transparent hover:border-(--color-primary-content)  px-3 py-1 rounded"
               title="Go to Dashboard"
               onClick={handleNavigate}
-            >
+            > 
               <img
                 src={user?.photo.url}
                 alt={user?.fullName}
