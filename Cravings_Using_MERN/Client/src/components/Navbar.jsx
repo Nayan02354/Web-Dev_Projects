@@ -1,13 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 // import logoLight from "../assets/transparentLogoLight.png";
 import { useAuth } from "../context/AuthContext";
 import { FaPowerOff } from "react-icons/fa";
+import { IoCartOutline } from "react-icons/io5";
 import toast from "react-hot-toast";
 import api from "../config/ApiConfig";
 
 const Navbar = () => {
-  const { user, isLogin, role, setUser, setIsLogin, setRole } = useAuth();
+  const { user, isLogin, role, setUser, setIsLogin, setRole, cartItemCount } =
+    useAuth();
   const navigate = useNavigate();
 
   const handleNavigate = () => {
@@ -45,19 +47,43 @@ const Navbar = () => {
   return (
     <>
       <div className="sticky top-0 z-99 flex items-center justify-between px-12 py-1 bg-(--color-primary) text-white w-full h-16 shadow-md">
-        <div className="h-full">
-          <Link to="/">
-            Home
+        <div className="h-full flex items-center">
+          <Link
+            to="/"
+            className="text-lg font-semibold hover:text-gray-200 transition"
+          >
+            HOME
           </Link>
+
+          {/*
+    <img
+      src=""
+      alt="Logo"
+      className="w-fit h-full"
+    />
+    */}
         </div>
 
         {isLogin ? (
           <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2 relative">
+              <button
+                className="hover:scale-110 transition-transform duration-200"
+                title="Go to Cart"
+              >
+                <IoCartOutline className="text-(--color-primary-content) text-3xl" />
+              </button>
+              {cartItemCount > 0 && (
+                <span className="absolute -top-2 -right-2 bg-(--color-error) text-white text-xs font-semibold rounded-full w-5 h-5 flex items-center justify-center">
+                  {cartItemCount}
+                </span>
+              )}
+            </div>
             <button
               className="flex gap-2 items-center text-(--color-primary-content) border border-transparent hover:border-(--color-primary-content)  px-3 py-1 rounded"
               title="Go to Dashboard"
               onClick={handleNavigate}
-            > 
+            >
               <img
                 src={user?.photo.url}
                 alt={user?.fullName}
@@ -100,4 +126,3 @@ const Navbar = () => {
 };
 
 export default Navbar;
- 
