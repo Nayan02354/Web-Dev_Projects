@@ -1,6 +1,6 @@
 import React from "react";
 import { IoGlobeOutline } from "react-icons/io5";
-import { platformIcon } from "./helpers";
+import { platformIcon } from "./Helper";
 
 const RestaurantSocialLinks = ({ socialMediaLinks }) => {
   if (!socialMediaLinks?.length) return null;
