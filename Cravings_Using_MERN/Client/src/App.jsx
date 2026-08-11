@@ -6,8 +6,14 @@ import Footer from "./components/Footer";
 import Home from "./pages/Home";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
-import user from "./pages/dashboard/CustomerDashboard";
 import Contact from "./pages/Contact";
+import AdminDashboard from "./pages/dashboard/AdminDashboard";
+import RestaurantDashboard from "./pages/dashboard/RestaurantDashboard";
+import RiderDashboard from "./pages/dashboard/RiderDashboard";
+import CustomerDashboard from "./pages/dashboard/CustomerDashboard";
+import OrderNow from "./pages/OrderNow";
+import RestaurantDetailsPage from "./pages/RestaurantDetailsPage";
+import Cart from "./components/Cart";
 
 const App = () => {
   return (
@@ -22,6 +28,15 @@ const App = () => {
         <Route path="/register" element={<Register />} />
         <Route path="/register/:userType" element={<Register />} />
         <Route path="/customer-dashboard" element={<CustomerDashboard />} />
+        <Route path="/restaurant-dashboard" element={<RestaurantDashboard />} />
+        <Route path="/rider-dashboard" element={<RiderDashboard />} />
+        <Route path="/admin-dashboard" element={<AdminDashboard />} />
+        <Route path="/order-now" element={<OrderNow />} />
+        <Route
+          path="/restaurant-details/:restaurantId"
+          element={<RestaurantDetailsPage />}
+        />
+        <Route path="/cart" element={<Cart />} />
       </Routes>
       <Footer />
     </>
