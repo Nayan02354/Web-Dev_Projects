@@ -1,6 +1,6 @@
 import React from "react";
 import { IoArrowBack, IoStar } from "react-icons/io5";
-import { restaurantTypeLabel } from "./helpers";
+import { restaurantTypeLabel } from "./Helper";
 
 const RestaurantHero = ({ restaurant, onBack }) => {
   const typeInfo = restaurantTypeLabel(restaurant.restaurantType);
@@ -20,7 +20,7 @@ const RestaurantHero = ({ restaurant, onBack }) => {
 
       {/* Back button */}
       <button
-        onClick={onBack}
+        onClick={onBack }
         className="absolute top-4 left-4 flex items-center gap-1.5 bg-white/20 backdrop-blur-sm text-white px-3 py-1.5 rounded-full text-sm hover:bg-white/30 transition"
       >
         <IoArrowBack /> Back
