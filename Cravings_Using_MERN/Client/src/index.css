@@ -1,24 +1,68 @@
 @import "tailwindcss";
-:root {
-  --color-primary:          #c2410c;  /* Brand orange-red */
-  --color-primary-content:  #ffffff;  /* Text on primary background */
-  --color-secondary:        #6b7280;  /* Muted gray text */
-  --color-neutral:          #3f3f46;  /* Dark sections (footer, bars) */
-  --color-neutral-content:  #f4f4f5;  /* Text on dark backgrounds */
-  --color-base-100:         #fff8f1;  /* Warm white page background */
-  --color-base-200:         #f5ede5;  /* Slightly darker warm white */
-  --color-base-300:         #e7d9c9;  /* Borders and dividers */
-  --color-base-content:     #2d1b10;  /* Default dark text */
-  --color-error:            #ef4444;  /* Red for error states */
-  --color-success:          #22c55e;  /* Green for success states */
-}
-#right {
-  height: 100vh;
-  overflow-y: auto;
-  scrollbar-width: none;
+
+* {
+
+  box-sizing: border-box;
 }
 
-#right::-webkit-scrollbar {
-  width: 0;
-  height: 0;
+button {
+  cursor: pointer;
+}
+
+:root {
+  /* Primary */
+  --color-primary: #c2410c;
+  --color-primary-content: #ffffff;
+
+  /* Secondary */
+  --color-secondary: #6b7280;
+  --color-secondary-content: #ffffff;
+
+  /* Accent */
+  --color-accent: #d9468f;
+  --color-accent-content: #ffffff;
+
+  /* Neutral */
+  --color-neutral: #3f3f46;
+  --color-neutral-content: #f4f4f5;
+
+  /* Base Surfaces */
+  --color-base-100: #fff8f1;
+  --color-base-200: #f5ede5;
+  --color-base-300: #e7d9c9;
+  --color-base-content: #2d1b10;
+
+  /* Info */
+  --color-info: #0ea5e9;
+  --color-info-content: #ffffff;
+
+  /* Success */
+  --color-success: #22c55e;
+  --color-success-content: #ffffff;
+
+  /* Warning */
+  --color-warning: #f59e0b;
+  --color-warning-content: #2d1b10;
+
+  /* Error */
+  --color-error: #ef4444;
+  --color-error-content: #ffffff;
+}
+
+/* Remove number input spinner buttons */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  appearance: textfield;
+  -moz-appearance: textfield;
+}
+
+/* Remove password input eye icon */
+input[type="password"]::-ms-reveal {
+  display: none;
 }

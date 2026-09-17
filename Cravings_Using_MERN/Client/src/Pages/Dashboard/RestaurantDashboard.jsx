@@ -1,11 +1,11 @@
 import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
-import RestaurantSidebar from "../../components/restaurantDashboard/RestaurantSidebar";
-import RestaurantOverview from "../../components/restaurantDashboard/RestaurantOverview";
-import RestaurantSetting from "../../components/restaurantDashboard/RestaurantSetting";
 import RestaurantOrders from "../../components/restaurantDashboard/RestaurantOrders";
-import RestaurantMenu from "../../components/restaurantDashboard/RestaurantMenu";
+import RestaurantOverview from "../../components/restaurantDashboard/RestaurantOverview";
+import RestaurantSidebar from "../../components/restaurantDashboard/RestaurantSidebar";
+import RestaurantSetting from "../../components/restaurantDashboard/RestaurantSetting";
+import RestaurantMenu from "../../components/RestaurantDashboard/RestaurantMenu";
 
 const RestaurantDashboard = () => {
   const { isLogin, role } = useAuth();

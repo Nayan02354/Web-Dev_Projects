@@ -14,13 +14,5 @@ app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
 
-
-
-
-
-
-
-
-
 import http from "http";
 import { Server } from "socket.io";
